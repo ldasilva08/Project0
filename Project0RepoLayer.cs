@@ -12,18 +12,14 @@ namespace Project0
         static public Project0DbContext DbContext = new Project0DbContext();
         DbSet<User> users = DbContext.Users;
         DbSet<Painting> paintings= DbContext.Paintings;
+        DbSet<Tour> tours= DbContext.Tours;
+        DbSet<BaseFloor> floors= DbContext.Floors;
+        DbSet<FloorTourLine> floorTourLines= DbContext.FloorTourLines;
+        DbSet<FloorTourUsrLine> floorTourUsrLines= DbContext.FloorTourUsrLines;
 
 
         //repo methods
 
-        /// <summary>
-        /// Creates a user after verifying that the player does not already exist. returns the user obj
-        /// </summary>
-        /// <returns></returns>
-        /// 
-        /// 
-        /// 
-        /// 
 #nullable enable
         public User? FindUser(string uname){
 
@@ -45,7 +41,7 @@ namespace Project0
 
         }
 #nullable disable
-
+        //doesnt need to be nullable no way for it to go wrong
         public Painting CreatePainting(int x, int y, int cost, string paingtingName, string locCodeName){
                 Painting p = new Painting();
                 p=paintings.Where( x => x.PaintingName==paingtingName && x.LocationCodeName==locCodeName).FirstOrDefault();
@@ -87,11 +83,92 @@ namespace Project0
             return u;
         }
         
+        public Tour CreateTour(int number, string locCodeName)
+       
+        {
+            Tour t = new Tour();
+
+            t = tours.Where(t => t.LocationCodeName== locCodeName && t.RowNum==number).FirstOrDefault();
+
+            if (t == null)
+            {
+                t = new Tour()
+                {
+                    LocationCodeName=locCodeName,
+                    RowNum=number
+                };
+                tours.Add(t);
+                DbContext.SaveChanges();
+            }
+            return t;
+        }
+
+        public FloorTourLine CreateFloorTourLine(string locCodeName, Guid id)
+       
+        {
+            FloorTourLine t = new FloorTourLine();
 
 
+            t = floorTourLines.Where(t => t.LocationCodeName== locCodeName && t.TourID==id).FirstOrDefault();
+
+            if (t == null)
+            {
+                t = new FloorTourLine()
+                {
+                    LocationCodeName=locCodeName,
+                    TourID=id
+                };
+                floorTourLines.Add(t);
+                DbContext.SaveChanges();
+            }
+            return t;
+        }
+
+        public FloorTourUsrLine CreateFloorTourUsrLine(string locCodeName, Guid tId, Guid uId )
+
+       
+        {
+            FloorTourUsrLine t = new FloorTourUsrLine();
 
 
+            t = floorTourUsrLines.Where(t =>  t.UserID==uId && t.LocationCodeName==locCodeName && t.TourID==tId).FirstOrDefault();
 
+            if (t == null)
+            {
+                t = new FloorTourUsrLine()
+                {
+                    UserID=uId,
+                    TourID=tId,
+                    LocationCodeName=locCodeName
+                };
+                floorTourUsrLines.Add(t);
+                DbContext.SaveChanges();
+            }
+            return t;
+        }
+    public BaseFloor DBCreateBaseFloor(string locCodeName, int locSize, int remTours){
+
+    
+
+BaseFloor t = new BaseFloor();
+
+
+            t = floors.Where(t =>  t.LocationCodeName==locCodeName).FirstOrDefault();
+
+            if (t == null)
+            {
+                t = new BaseFloor()
+                {
+                    LocationCodeName=locCodeName,
+                    LocationSize=locSize,
+                    LocationRemainingTours=remTours
+                };
+                floors.Add(t);
+                DbContext.SaveChanges();
+            }
+            return t;
+
+    }
 
 
 

@@ -10,10 +10,14 @@ namespace Project0
 
         
 
-
+     public DbSet<FloorTourLine> FloorTourLines{get;set;}
+     public DbSet<FloorTourUsrLine> FloorTourUsrLines{get;set;}
 
         public DbSet<User> Users { get; set; }
         public DbSet<Painting> Paintings {get;set;}
+        public DbSet<Tour> Tours{get;set;}
+        public DbSet<BaseFloor> Floors{get;set;}
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
       {
             options.UseSqlServer("Server=localhost\\SQLEXPRESS;"

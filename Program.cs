@@ -11,21 +11,19 @@ namespace Project0
 
         
         {
-        // BaseFloor smallExhbit = new BaseFloor("ChristenAbs", 3, 3);
+//Manually create a floor for database. You cannot add a user until database has at least one BaseFloor
 
-        // Console.ReadLine();
+        // BaseFloor smallExhbit = new BaseFloor("SoriaMoriaExhibit", 5, 40);
+
+
         //  Console.WriteLine("Exit");
         // Console.ReadLine();
+
 //^^ creates new floor
 
             // variables
             Console.Clear();
             string usrChoice;
-
-            int[,] a=generateMatrix();
-            Print2DArray(a);
-
-
 
             do {//enter program
 
@@ -114,6 +112,11 @@ namespace Project0
                 }
 
 
+
+
+
+
+
             }
         }while(usrChoice!="-1");//end program
 
@@ -127,8 +130,8 @@ namespace Project0
 
 
 //helper to generate matrix
-    public static int[,] generateMatrix(){
-        int[,] array = new int[5, 5];
+    public static int[,] generateMatrix(int x){
+        int[,] array = new int[x, x];
         return array;
 
 }//end generator helper
@@ -147,8 +150,6 @@ namespace Project0
         }
     }// matrix printer helper
 
-
-
     //helper class to assist with options passed sing up/in
     static class SignedIn
 
@@ -166,7 +167,15 @@ namespace Project0
             usrChoice=Console.ReadLine();
             
             if(usrChoice=="3"){
-                generateMatrix();
+                Console.WriteLine("How many rows does the floor you want to look at have? No more than 6! ");
+                int n = ValidationOptions.ValidateStringToInt(Console.ReadLine());
+                Console.Clear();
+                if (n<7 && n>0){
+                Print2DArray(generateMatrix(n));}
+
+                Console.WriteLine("Press Enter to continue");
+                Console.ReadLine();
+                usrChoice="-1";
             }
             if(usrChoice=="4"){
 
@@ -219,17 +228,6 @@ namespace Project0
                     throw new Exception("\nYou did not enter a correct a input please try again.");}
     }
 }//end validation helper
-
-
-///helper to set up "art multiple" exhibits
-
-    //  static public void CreateMultipleFloors(){
-         
-    //      BaseFloor smallExhbit = new BaseFloor("ChristenAbs", 3, 5);
-    //      LinkedList<Painting> l= smallExhbit.getTourAtIndex(0);
-         
-    // }
-
 
 
     

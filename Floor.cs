@@ -28,17 +28,15 @@ namespace Project0
  
         //private variable init
 
-        [Key]
-        public Guid LocationID { get; set; } = Guid.NewGuid();
-
-        [Key]
+        
         private string locationCodeName;
         private int locationSize;
         private int locationRemainingTours;
 
         public List<LinkedList<Painting>> FloorArray;
-        //public properties
-
+        //public 
+        
+        [Key]   
         public string LocationCodeName { get {return locationCodeName;} set {
                     
                 if (value is string && value.Length < 20 && value.Length > 0)
@@ -90,13 +88,13 @@ namespace Project0
                 LinkedList<Painting> rowList = new LinkedList<Painting>(); 
                 for (int j = 0; j < locSize; j++)
                 {
-            Console.WriteLine($"{i}");
-            Console.ReadLine();
+
                     var p= p0Context.CreatePainting(i+1 , j+1, 20,$" <={i}--{j}=> ", floorName );
                     
                     rowList.AddLast(p);   
                 }
-
+                var tour=p0Context.CreateTour(locSize, floorName);
+                p0Context.CreateFloorTourLine(floorName,tour.TourID);
                 floorArr.Add(rowList);
                 
 

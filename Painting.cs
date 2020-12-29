@@ -11,18 +11,18 @@ namespace Project0
         public abstract int Y{get;set;}
         public abstract int Cost{get;set;}
 
-        
-
-        public abstract Guid PaintingID{get;set;}
+    
 
 
-        //method
+        //methods
         public abstract void goRight();
         public abstract void goUp();
         public abstract void goLeft();
         public abstract void goDown();
 
     }
+
+
 
         public class Painting : Node
         {
@@ -41,7 +41,7 @@ namespace Project0
                 //private variable init +key
 
                 [Key]
-                public override Guid PaintingID { get; set; } = Guid.NewGuid();
+                public Guid PaintingID { get; set; } = Guid.NewGuid();
                 private int x;
                 private int y;
                 private int cost;
