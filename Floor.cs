@@ -21,7 +21,7 @@ namespace Project0
                     this.LocationCodeName=locCodeName;
                     this.LocationSize=locSize;
                     this.LocationRemainingTours=locRemainingTours;
-                    this.FloorArray=this.CreateBaseTours(this.locationSize, this.LocationCodeName);
+                
                 }
 
 
@@ -33,7 +33,6 @@ namespace Project0
         private int locationSize;
         private int locationRemainingTours;
 
-        public List<LinkedList<Painting>> FloorArray;
         //public 
         
         [Key]   
@@ -74,15 +73,10 @@ namespace Project0
 
 
         //unique methods
-        public LinkedList<Painting> getTourAtIndex(int index){ //ultimately get row
-            LinkedList<Painting> temp=new LinkedList<Painting>();
-            temp=this.FloorArray[index];
-            return temp;}
 
         public List<LinkedList<Painting>> CreateBaseTours(int locSize, string floorName){
             List<LinkedList<Painting>> floorArr=new List<LinkedList<Painting>>();
-            
-
+            int rowCount=0;
             for (int i = 0; i < locSize; i++)
             {
                 LinkedList<Painting> rowList = new LinkedList<Painting>(); 
@@ -90,16 +84,16 @@ namespace Project0
                 {
 
                     var p= p0Context.CreatePainting(i+1 , j+1, 20,$" <={i}--{j}=> ", floorName );
-                    
                     rowList.AddLast(p);   
                 }
-                var tour=p0Context.CreateTour(locSize, floorName);
+                var tour=p0Context.CreateTour(++rowCount, floorName);
                 p0Context.CreateFloorTourLine(floorName,tour.TourID);
-                floorArr.Add(rowList);
                 
+
 
             }
         return floorArr;
+        
         }
 
 

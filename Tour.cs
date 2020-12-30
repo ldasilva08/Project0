@@ -5,7 +5,6 @@ namespace Project0
     public class Tour
     {
         private string locationCodeName;
-
         private int rowNum;
         public int RowNum{get{return rowNum;}set{rowNum=value;}}
 

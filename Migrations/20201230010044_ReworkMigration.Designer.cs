@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project0;
 
 namespace Project0.Migrations
 {
     [DbContext(typeof(Project0DbContext))]
-    partial class Project0DbContextModelSnapshot : ModelSnapshot
+    [Migration("20201230010044_ReworkMigration")]
+    partial class ReworkMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,7 +122,7 @@ namespace Project0.Migrations
 
             modelBuilder.Entity("Project0.User", b =>
                 {
-                    b.Property<Guid>("UserID")
+                    b.Property<Guid>("userID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -133,7 +135,7 @@ namespace Project0.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserID");
+                    b.HasKey("userID");
 
                     b.ToTable("Users");
                 });

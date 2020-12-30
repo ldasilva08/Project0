@@ -4,12 +4,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Project0
 {
+    
     abstract public class Person
+
     {
+        static Project0RepoLayer p0Context = new Project0RepoLayer(); 
             public abstract string Username{get;set;}
             public abstract string Fname{get;set;}
             public abstract string Lname{get;set;}
-            public abstract Guid userID{get;set;}
+            public abstract Guid UserID{get;set;}
   
     }
 
@@ -30,7 +33,7 @@ namespace Project0
                 //private variable init
 
                 [Key]
-                public override Guid userID { get; set; } = Guid.NewGuid();
+                public override Guid UserID { get; set; } = Guid.NewGuid();
                 private string username;
                 private string fname;
                 private string lname;
@@ -68,7 +71,8 @@ namespace Project0
                         throw new Exception("The player name you sent is no valid");
                     }} }
 
-        
+            //methods
+                
 
     }
 

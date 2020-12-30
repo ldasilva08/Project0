@@ -11,15 +11,7 @@ namespace Project0
 
         
         {
-//Manually create a floor for database. You cannot add a user until database has at least one BaseFloor
-
-        // BaseFloor smallExhbit = new BaseFloor("SoriaMoriaExhibit", 5, 40);
-
-
-        //  Console.WriteLine("Exit");
-        // Console.ReadLine();
-
-//^^ creates new floor
+            // p0Context.ManualCreateFloor();
 
             // variables
             Console.Clear();
@@ -79,11 +71,11 @@ namespace Project0
                 
             if(un!="0"||fn!="0"||ln!="0"){
                 User user=p0Context.CreateUser(un,fn,ln);
-                SignedIn.FirstMenu(user);
-                usrChoice="-1";
+                usrChoice=SignedIn.FirstMenu(user);
+                
             }
 
-            }
+            }//end choice 1
 
             
             while(usrChoice=="2"){
@@ -166,7 +158,7 @@ namespace Project0
             "\n-1. Logout" );
             usrChoice=Console.ReadLine();
             
-            if(usrChoice=="3"){
+            if(usrChoice=="3"){ //if user wants matrix printed
                 Console.WriteLine("How many rows does the floor you want to look at have? No more than 6! ");
                 int n = ValidationOptions.ValidateStringToInt(Console.ReadLine());
                 Console.Clear();
@@ -175,12 +167,36 @@ namespace Project0
 
                 Console.WriteLine("Press Enter to continue");
                 Console.ReadLine();
-                usrChoice="-1";
-            }
-            if(usrChoice=="4"){
+                usrChoice="0";
+            } //end print 2d matrix
+            if(usrChoice=="4"){//if user wants to go on tour
 
+                Console.WriteLine("Which floor would you like to go?");
+                List<string> lst= p0Context.FindAllFloors();
+                int count=0;
+                foreach(string str in lst){
+                    Console.WriteLine($"\n{++count}. {str}");
+                }
+                int floorNumberChoice=ValidationOptions.ValidateStringToInt(Console.ReadLine());
+                string floorName=lst[--floorNumberChoice];
 
-            }
+                Console.WriteLine("What row of the museum floor would you like to visit? Please be nice and enter within expected range....for now.");
+                int usrRowChoice=ValidationOptions.ValidateStringToInt(Console.ReadLine());
+
+                Tour tour=new Tour();
+                tour=p0Context.FindTour(floorName,usrRowChoice);
+
+                bool tbool=p0Context.UserGoesOnTour(floorName);
+
+                if(tbool && tour!=null){
+                Console.Clear();
+                p0Context.CreateFloorTourUsrLine(floorName, tour.TourID ,u.UserID);
+                Console.WriteLine("Tour completed! We hope your pointer had fun!");
+                }
+
+                Console.WriteLine("\n\nPress enter to continue");
+                Console.ReadLine();//end decision 4
+            }//end go on tour
 
 
         }while(usrChoice!="-1");

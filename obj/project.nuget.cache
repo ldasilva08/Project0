@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "P8sypL8evh56vqZQBLXbZU4Q773xzdsq2HCDQmscXdYm4oK1Z9rOLbEiE79byzY/2mvNkycV0nqnUOYThGrvaA==",
+  "dgSpecHash": "1QxA8IOpJcPqMeTHmFAgOkTljfa6+DLqZ/zOdGdjCSm0pS9CCT7VI4oIHGhgKYWRkkImzIBq7fYYhMae3oYIfw==",
   "success": true,
   "projectFilePath": "C:\\Users\\luanf\\OneDrive\\Documents\\Revature\\GithubBatchIntro\\Project0\\Project0.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,7 @@
     "C:\\Users\\luanf\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\luanf\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\luanf\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\luanf\\.nuget\\packages\\morelinq\\3.3.2\\morelinq.3.3.2.nupkg.sha512",
     "C:\\Users\\luanf\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
     "C:\\Users\\luanf\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\luanf\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

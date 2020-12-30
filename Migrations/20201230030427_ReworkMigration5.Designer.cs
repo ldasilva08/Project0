@@ -10,8 +10,8 @@ using Project0;
 namespace Project0.Migrations
 {
     [DbContext(typeof(Project0DbContext))]
-    [Migration("20201229230517_ReworkMigration")]
-    partial class ReworkMigration
+    [Migration("20201230030427_ReworkMigration5")]
+    partial class ReworkMigration5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -122,7 +122,7 @@ namespace Project0.Migrations
 
             modelBuilder.Entity("Project0.User", b =>
                 {
-                    b.Property<Guid>("userID")
+                    b.Property<Guid>("UserID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -135,7 +135,7 @@ namespace Project0.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("userID");
+                    b.HasKey("UserID");
 
                     b.ToTable("Users");
                 });
