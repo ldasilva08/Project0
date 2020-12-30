@@ -251,9 +251,9 @@ namespace Project0
         Console.ReadLine();
 
 
-        DBCreateBaseFloor("ChristenAExhbit", 2, 24);
-        DBCreateBaseFloor("DaliExhbit", 4, 24);
-        DBCreateBaseFloor("EvansGambitExhbit", 6, 30);
+        DBCreateBaseFloor("NewExhbit", 1, 30);
+        DBCreateBaseFloor("New2Exhbit", 3, 48);
+        DBCreateBaseFloor("New3Exhbit", 5, 57);
        
     
 
